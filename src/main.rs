@@ -58,6 +58,69 @@ fn main() {
     // でもendのあたいが3ってのは気になるけどね、長さじゃなくてendなら普通[0..2]じゃね？
     // よくわからん
 
+    // 構造体
+    // struct Person {
+    //     name: String,
+    //     age: u32,
+    // }
+
+    // let person = Person {
+    //     name: String::from("NotPop"),
+    //     age: 23,
+    // };
+    //　ちょこちょこ出てきてるこのfromって何やろか・・・
+    // Stringクラスのstaticな関数なんかな？fromの引数からString型でデータ作るよ！的な
+
+    // 列挙型
+    // enum Event {
+    //     Quit,
+    //     KeyDown(u8),
+    //     MouseDown { x: i32, y: i32},
+    // }
+
+    // let event1 = Event::Quit;
+    // let event2 = Event::MouseDown { x: 10, y: 10 };
+    // 正直phpとかjavaしかやってこなかったからこの辺りはいまいちわかっとらんけどそのうち使うやろからざっくり理解で。
+
+    //  標準ライブラリの型
+
+    // Option データが存在する場合と存在しない場合を表現できる列挙型
+    // switchの可読性あげた強化版みたいなイメージ
+    // pub enum Option<T> {
+    //     // データいない時
+    //     None,
+    //     // データいる時
+    //     Some(T),
+    // }
+
+    // Result 処理結果が成功かエラーかを表現できる列挙型
+    // TとEは任意の型
+    // pub enum Result<T, E> {
+    //     // 成功の時
+    //     Ok(T),
+    //     // 失敗の時
+    //     Err(Err),
+    // }
+
+    // pub enum Result<i32, String> {
+    //     // 成功時は値
+    //     Ok(i32),
+    //     // 失敗はエラーメッセージ
+    //     Err(String),
+    // }
+
+    // let result: Result<i32, String> = Ok(200);
+
+    // match result {
+    //     Ok(code) => println!("code: {}", code),
+    //     Err(err) => println!("Err: {}", err),
+    // }
+
+    // let result: Result<i32, String> = Ok(200);
+    // println!("code: {}", result.unwrap_or(-1));
+    // let result: Result<i32, String> = Err("error".to_string());
+    // println!("code: {}", result.unwrap_or(-1));
+    // unwrap_orはOKならそのまま展開してだめなら引数を返す。
 
 
 }
