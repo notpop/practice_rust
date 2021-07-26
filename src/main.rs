@@ -122,5 +122,16 @@ fn main() {
     // println!("code: {}", result.unwrap_or(-1));
     // unwrap_orはOKならそのまま展開してだめなら引数を返す。
 
+    // fn func(code: i32) -> Result<i32, String> {
+    //     println!("code: {}", code);
+    //     Ok(100)
+    // }
+
+    // and_then()はOkだった時のみ指定した関数を返すので
+    // 下記の場合だと前者はOKだが後者はErrなので前者しか実行されない。
+    // let result: Result<i32, String> = Ok(200);
+    // let next_result = result.and_then(func);
+    // let result: Result<i32, String> = Err("error".to_string());
+    // let next_result = result.and_then(func);
 
 }
