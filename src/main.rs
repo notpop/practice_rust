@@ -225,5 +225,108 @@ fn main() {
     // staticはバイナリファイルの特定のせくしょに配置される
     // もしコンパイル時には決まらないが実行時に決まる定数を定義したい場合はlazy_staticを使うと良い
 
+    // 制御構文
+    // let number = 1;
+    // if 0 < number {
+    //     println!("0 < number");
+    // }
+    // else if number < 0 {
+    //     println!("number < 0");
+    // }
+    // else {
+    //     println!("0 == number");
+    // }
+
+    // ifは式なのでif式を評価した値を変数に束縛することや、関数の引数にすることもできる
+    // let number = 1;
+    // let result = if 0 > number {
+    //     number
+    // }
+    // else {
+    //     -number
+    // };
+
+    // println!("{}", result);
+    // ifが返す値の型はすべて揃っている必要がある
+
+    // loop, for, whileが存在する
+    // loopは内部の処理を繰り返し実行でき抜け出す時にはbreakを使用する
+    // さらにloopは式なのでbreak戻り値をつけて抜けることが可能
+
+    // let mut count = 0;
+
+    // let result = loop {
+    //     println!("{}", count);
+    //     count += 1;
+    //     if count == 10 {
+    //         break count;
+    //     }
+    // };
+
+    //println!("{}", result);
+
+    // 文ではなく式ってところが自由度をかなりあげてるんやな
+
+    // let mut count = 0;
+
+    // while count < 10 {
+    //     println!("count: {}", count);
+    //     count += 1;
+    // }
+
+    // let count: i32;
+
+    // for count in 0..10 {
+    //     println!("count: {}", count);
+    // }
+
+    // let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    // for element in &array {
+    //     println!("element: {}", element);
+    // }
+
+    // loop, for, whileにはラベルをつけることができ、breakするときにそのラベル指定で抜けることができる
+    // 'main: loop {
+    //     println!("main loop start");
+    //     'sub: loop {
+    //         println!("sub loop start");
+
+    //         'subと何も記載無しに変更すると永遠ループした
+    //         break 'main;
+
+    //         println!("sub loop end");
+    //     }
+    //     println!("main loop end");
+    // }
+
+    // match
+    // let i: i32 = 5;
+    // match i {
+    //     1 => println!("1"),
+    //     2 => println!("2"),
+    //     3 => println!("3"),
+    //     _ => println!("misc"),
+    // }
+
+
+    // enum Color {
+    //     Red,
+    //     Blue,
+    //     Green,
+    // }
+
+    // 列挙子が足りないとエラー
+    // let c = Color::Red;
+    // match c {
+    //     Color::Red => println!("Red"),
+    //     Color::Blue => println!("Blue"),
+    //     Color::Green => println!("Green"),
+    // }
+    // 網羅性の確認をし全ての列挙子に対する処理が存在するかチェックする
+
+    // matchも式なので分岐処理を行った後の結果を変数に束縛することも可能
+
+
 
 }
