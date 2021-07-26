@@ -134,4 +134,96 @@ fn main() {
     // let result: Result<i32, String> = Err("error".to_string());
     // let next_result = result.and_then(func);
 
+    // 関数ないのエラーの処理を外だしできる?演算子らしい
+    // エラーの処理無茶苦茶効率化できそうじゃね？
+    // 感覚と想像だけどthrowできる感覚なんよね？
+    // fn error_handling(result: Result<i32, String>) -> Result<i32, String> {
+    //     let code = result?;
+    //     println("code: {}", code);
+    //     Ok(100);
+    // }
+
+    // Vecがベクタ型で内部の要素数を増減させられる。
+    // 多分普段使ってる配列とかオブジェクトに一番近いのでは？
+    // 初期値の設定
+    // let v1 = vec![1, 2, 3, 4, 5];
+    // 0で五つ埋める
+    // let v2 = vec![0; 5];
+    // Vecにはメソッドが定義されててpush(), pop()らしい
+    // まんまArrayやんけ・・・・
+    // 最後尾に要素の追加または削除ってこと
+    // 普通にindexしていで中身抜き出すこともできる
+    // let v = vec![1, 2, 3, 4, 5];
+    // println!("{}", v[0]);
+
+    // 要素が定義されてないところへのアクセスはエラー（パニック）を起こすみたい。
+    // パニックは起きると処理の強制終了が行われる
+    // getメソッドで取得すると定義されてない場合はNoneを返却する、上記の懸念は解消される
+    // let v = vec![1, 2, 3, 4, 5];
+    // for element in &v {
+    //     println!("{}", element);
+    // }
+    // これは拡張for文って感じ
+
+    // Box
+    // IoTのカンファレンスで聞いたスタックの話やね。
+    // スタックだとコンパイルする時にサイズわかってて固定サイズ出ないとだめなのに対して
+    // Box使うとヒープ領域に保存されて要は必要な分だけ好きなタイミングでスペースを確保できて逆に
+    // いらなくなったタイミングでメモリ開放できるみたいなやつやけど動作が複雑な分ロスが発生するよねってこと
+    // Boxはヒープを確保してその場所のポインタをスタックに格納する
+
+    // Boxでできるようになること
+    // コンパイルの時に固定サイズでないとだめなところがサイズわからんくてもよくなる
+    // 大きなサイズの型の値を渡す時にコピーではなくてポイント渡すだけ
+    // 共通のトレイトを実装した様々な型を画一的にポインタで扱うこと
+
+    // fn main() {
+    //     let byte_array = [b'h', b'e', b'l', b'l', b'o'];
+    //     print(byte_array);
+    // }
+
+    // fn print(s: [u8]) {
+    //     println!("{:?}", s);
+    // }
+
+    // doesn't have a size known at compile-timeって怒られた
+    // note: all function arguments must have a statically known size
+
+    // fn print(s: Box<[u8]>) {
+    //     println!("{:?}", s);
+    // }
+
+    // fn main() {
+    //     let byte_array = [b'h', b'e', b'l', b'l', b'o'];
+    //     print(Box::new(byte_array));
+
+    //     let byte_array = [b'w', b'o', b'r', b'l', b'd', b'!'];
+    //     print(Box::new(byte_array));
+    // }
+
+    // 実行しないとdead_codeになる
+    // main();
+
+    // 変数を束縛する場合にはコンパイラが型推測をしてくれて
+    // こういう場合だと基本的にi32になる
+    // 変更したい場合は明示的に定義しないとだめ
+    // let immut_val = 10;
+    // let mut mut_val = 20;
+
+    // mut_val += immmut_val;
+
+    // let v1: u64 = 10;
+    // // 数字限定だが下記のような下記からでもよい
+    // let v2 = 10u64;
+
+    // constは絶対に変更不可
+    // staticは変更可能にもすることができるが
+    // グローバルだとどこからでも変更可能な値になるのでunsafeブロック内に入れる必要がある
+    // 安全の保証ができないコードを実行する必要がある時それらのコードはunsafeブロックに入れないとだめらしい
+
+    // constはコンパイラがビルドする時実際の値に置き換えられるのに対して
+    // staticはバイナリファイルの特定のせくしょに配置される
+    // もしコンパイル時には決まらないが実行時に決まる定数を定義したい場合はlazy_staticを使うと良い
+
+
 }
